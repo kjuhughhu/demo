@@ -16,10 +16,8 @@ class WebController extends Controller
     }
 
     public function home(){
-        $newests = Product::take(3)->orderBy('created_at','desc')->get();
-        $max_price = Product::take(3)->orderBy('price','desc')->get();
-        $min_price = Product::take(3)->orderBy('price','asc')->get();
-        return view("home",['max_price'=> $max_price,'newests'=>$newests,'min_price'=>$min_price]);
+        $categories = Product::all();
+        return view('admin.category.index',['categories'=>$categories]);
     }
 
     public function product($id){
